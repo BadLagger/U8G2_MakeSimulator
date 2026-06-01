@@ -1,3 +1,4 @@
 *.o
+lcd_simulator
 
 .vscode/

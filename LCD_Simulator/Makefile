@@ -46,7 +46,10 @@ C_FILES = $(shell find $(VIRTUAL_ARDUINO_DIR) -name "*.c" \
 SOURCES_C = $(C_FILES)
 
 # Linker flags
-LDFLAGS = $(shell pkg-config --libs sdl2 sdl2_tff)
+LDFLAGS = $(shell pkg-config --libs sdl2 sdl2_ttf)
+
+# MacOS Specific
+LDFLAGS += -framework Cocoa -framework IOKit -framework Carbon
 
 # Objects
 OBJECTS_CXX = $(SOURCES_CXX:.cpp=.o)
@@ -59,7 +62,7 @@ TARGET = lcd_simulator
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CXX) -o $@ $^ $(LDFLAGS)
+	$(CXX) -o $@ $(OBJECTS) $(LDFLAGS)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
