@@ -8,7 +8,7 @@
 #ifndef __LLA_ADVANCEIO_H__
 #define __LLA_ADVANCEIO_H__
 
-#include "./LLA_Drivers/inc/LLA_baseIO.h"
+#include "LLA_baseIO.h"
 
 /* std lib includes */
 #include <stdio.h>

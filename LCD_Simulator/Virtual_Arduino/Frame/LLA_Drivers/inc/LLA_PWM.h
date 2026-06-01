@@ -8,7 +8,7 @@
 #ifndef __LLA_PWM_H__
 #define __LLA_PWM_H__
 
-#include "LLA_Drivers.h"
+#include "../../LLA_Drivers.h"
 
 /* std lib includes */
 #include <stdio.h>

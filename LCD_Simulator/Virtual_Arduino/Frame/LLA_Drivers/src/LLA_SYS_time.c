@@ -1,4 +1,4 @@
-#include "LLA_Drivers.h"
+#include "../../LLA_Drivers.h"
 
 /************************ LLA Interface headers includes ****************************/
 /* Chip SDK headers includes */
@@ -14,7 +14,7 @@
 
 /************************ LLA common variables ****************************/
 LARGE_INTEGER mcu_start_time;
-LARGE_INTEGER f;	//¼ÆÊ±Æ÷ÆµÂÊ
+LARGE_INTEGER f;	//ï¿½ï¿½Ê±ï¿½ï¿½Æµï¿½ï¿½
 
 
 /************************ LLA common function ****************************/

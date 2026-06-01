@@ -21,7 +21,7 @@
  * SOFTWARE.
  */
 #include "SPI.h"
-#include "Frame.h"
+#include "../Frame.h"
 
 SPIClass::SPIClass(LLA_SPI_t _SPIx)
 {
