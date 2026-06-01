@@ -4,5 +4,4 @@ U8G2_Simulator is a PC simulator for Arduino platform.You can write UI related c
 
 This fork from: https://github.com/MS10755/U8G2_Simulator.git
 
-Adapte project for Makefile build.
-s
+Adapted project for Makefile builds.
