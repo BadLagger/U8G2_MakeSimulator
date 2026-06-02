@@ -14,7 +14,7 @@ extern "C" {
 #endif
 
 #include "LLA_Drivers/inc/LLA_OS.h"
-#include "LLA_Drivers/inc/LLA_Assert.h"
+#include "LLA_Drivers/inc/LLA_assert.h"
 #include "LLA_Drivers/inc/LLA_ADC.h"
 #include "LLA_Drivers/inc/LLA_advanceIO.h"
 #include "LLA_Drivers/inc/LLA_baseIO.h"

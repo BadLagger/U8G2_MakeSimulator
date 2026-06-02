@@ -17,8 +17,8 @@ static void ui_loop() {
     u8g2.setFont(u8g2_font_5x7_tf);
     //u8g2.drawStr(u8g2.getWidth()-38,8,"64%");
 
-    //SYSTEMTIME stCurTime;		// 当前时间
-    //GetLocalTime(&stCurTime); // 获取当前时间
+    //SYSTEMTIME stCurTime;		// 锟斤拷前时锟斤拷
+    //GetLocalTime(&stCurTime); // 锟斤拷取锟斤拷前时锟斤拷
     time_t now;
     time(&now);
     struct tm* t = localtime(&now);
@@ -68,6 +68,6 @@ static void key_callback(uint8_t key,uint8_t event) {
     }
     else if (key == 4 && event == BUTTON_EVENT_PRESSED) {
         keyBar.mask(3,1000);
-        //exit(0);//关机
+        //exit(0);//锟截伙拷
     }
 }
