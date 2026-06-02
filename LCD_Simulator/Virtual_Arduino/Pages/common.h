@@ -12,7 +12,7 @@ public: U8G2_SDL_128X64(const u8g2_cb_t* rotation) : U8G2() {
     u8g2_SetupBuffer_SDL_128x64(&u8g2, rotation);
 }
 public:
-    /* 这里重写下U8G2 setFont以提供getFont方法 */
+    /* 锟斤拷锟斤拷锟斤拷写锟斤拷U8G2 setFont锟斤拷锟结供getFont锟斤拷锟斤拷 */
     void setFont(const uint8_t* font) {
         U8G2::setFont(font);
         _font = font;

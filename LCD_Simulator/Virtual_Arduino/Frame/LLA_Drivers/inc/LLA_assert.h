@@ -18,7 +18,7 @@
 
 
 #if 1
-#include "LLA_Drivers.h"
+#include "../../LLA_Drivers.h"
 #define LLA_AssertPrintf(...)	LLA_UART_Printf(LLA_UART1,__VA_ARGS__)
 #else
 #define LLA_AssertPrintf(...)

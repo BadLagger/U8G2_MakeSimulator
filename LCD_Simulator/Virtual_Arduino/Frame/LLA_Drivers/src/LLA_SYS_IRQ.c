@@ -1,4 +1,4 @@
-#include "LLA_Drivers.h"
+#include "../../LLA_Drivers.h"
 
 /************************ LLA Interface headers includes ****************************/
 /* Chip SDK headers includes */

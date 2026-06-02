@@ -1,8 +1,9 @@
-#include "LLA_Drivers.h"
+#include "../../LLA_Drivers.h"
 
 /************************ LLA Interface headers includes ****************************/
 /* Chip SDK headers includes */
-#include<Windows.h>
+#include "../../LLA_Drivers.h"
+#include <SDL2/SDL.h>
 
 /************************ LLA Interface micro define ****************************/
 
@@ -13,8 +14,8 @@
 
 
 /************************ LLA common variables ****************************/
-LARGE_INTEGER mcu_start_time;
-LARGE_INTEGER f;	//¼ÆÊ±Æ÷ÆµÂÊ
+static uint32_t mcu_start_time = 0;
+static uint32_t f = 1000; // 1 kHz clock for ms	
 
 
 /************************ LLA common function ****************************/
@@ -50,8 +51,7 @@ uint32_t LLA_SYS_Time_ConsumeMicros(uint32_t pre_us){
   * @retval	:	
   */
 void LLA_SYS_Time_Init(){
-	QueryPerformanceFrequency(&f);
-	QueryPerformanceCounter(&mcu_start_time);
+  mcu_start_time = SDL_GetTicks();
 }
 
 
@@ -62,7 +62,7 @@ void LLA_SYS_Time_Init(){
   * @retval	:	
   */
 uint32_t LLA_SYS_Time_Millis(){
-	return LLA_SYS_Time_Micros()/1000;
+	return SDL_GetTicks() - mcu_start_time;
 }
 
 
@@ -74,10 +74,7 @@ uint32_t LLA_SYS_Time_Millis(){
   */
 uint32_t LLA_SYS_Time_Micros(void)
 {
-	LARGE_INTEGER time_now;
-	QueryPerformanceCounter(&time_now);
-	
-   return  (time_now.QuadPart - mcu_start_time.QuadPart) / (double)f.QuadPart * 1000000;
+  return (SDL_GetTicks() - mcu_start_time) * 1000;
 }
 
 
@@ -88,8 +85,7 @@ uint32_t LLA_SYS_Time_Micros(void)
   * @retval	:	
   */
 void LLA_SYS_Time_DelayMS(uint32_t ms){
-	uint32_t start_ms = LLA_SYS_Time_Millis();
-	while (LLA_SYS_Time_ConsumeMillis(start_ms) < ms);
+  SDL_Delay(ms);
 }
 
 

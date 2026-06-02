@@ -33,7 +33,7 @@
 
 */
 #include <Arduino.h>
-#include "Juan_EventButton.h"
+#include <Juan_EventButton.h>
 #include "MillisTaskManager.h"
 #include "common.h"
 #include "manage.h"
@@ -85,7 +85,6 @@ void setup(void) {
 void loop(void) {
     pagemanager.Loop();
     TaskManager.Running(millis());
-    /* SDL 按键只能检测单次按下，无法检测持续性按下 */
     switch (u8g_sdl_get_key())
     {
     case 'a':

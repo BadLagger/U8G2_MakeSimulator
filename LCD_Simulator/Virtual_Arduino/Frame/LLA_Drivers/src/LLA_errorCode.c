@@ -1,4 +1,4 @@
-#include "LLA_Drivers.h"
+#include "../../LLA_Drivers.h"
 #include "../inc/LLA_errorCodeInfos.h"
 
 #define LLA_ERRORCODE_NUM	(sizeof(LLA_ErrorCode_List)/sizeof(LLA_ErrorCode_List[0]))

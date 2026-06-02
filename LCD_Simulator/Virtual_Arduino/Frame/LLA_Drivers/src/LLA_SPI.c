@@ -5,7 +5,7 @@
  * @LastEditors: Juan
  * @LastEditTime: 2022-04-01 15:32:14
  */
-#include "LLA_Drivers.h"
+#include "../../LLA_Drivers.h"
 
 /************************ LLA Interface headers includes ****************************/
 /* Chip SDK headers includes */

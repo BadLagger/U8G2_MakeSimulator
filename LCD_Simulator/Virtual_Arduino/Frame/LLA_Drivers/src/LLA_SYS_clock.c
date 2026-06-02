@@ -5,7 +5,7 @@
  * @LastEditors: Juan
  * @LastEditTime: 2022-04-01 15:32:55
  */
-#include "LLA_Drivers.h"
+#include "../../LLA_Drivers.h"
 
 /************************ LLA Interface headers includes ****************************/
 /* Chip SDK headers includes */
@@ -31,7 +31,7 @@
 void LLA_SYS_clock_Init(void){
 	/*
 		TODO:
-			初始化外部时钟，校准LSI，HSI
+			锟斤拷始锟斤拷锟解部时锟接ｏ拷校准LSI锟斤拷HSI
 	*/
 }
 
