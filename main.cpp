@@ -40,7 +40,7 @@
 MillisTaskManager TaskManager;
 static uint8_t now_page;
 
-U8G2_SDL_128X64 u8g2(U8G2_R0);
+U8G2_SDL_128X32 u8g2(U8G2_R0);
 
 #include "SDL.h"
 

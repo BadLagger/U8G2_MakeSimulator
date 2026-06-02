@@ -5,11 +5,14 @@
 #include "Juan_EventButton.h"
 #include "MillisTaskManager.h"
 #include <initializer_list>
+
 using namespace std;
+
 extern MillisTaskManager TaskManager;
-class U8G2_SDL_128X64 : public U8G2 {
-public: U8G2_SDL_128X64(const u8g2_cb_t* rotation) : U8G2() {
-    u8g2_SetupBuffer_SDL_128x64(&u8g2, rotation);
+
+class U8G2_SDL_128X32 : public U8G2 {
+public: U8G2_SDL_128X32(const u8g2_cb_t* rotation) : U8G2() {
+    u8g2_SetupBuffer_SDL_128x32(&u8g2, rotation);
 }
 public:
     /* ������д��U8G2 setFont���ṩgetFont���� */
@@ -24,7 +27,7 @@ private:
     const uint8_t* _font;
 };
 
-extern U8G2_SDL_128X64 u8g2;
+extern U8G2_SDL_128X32 u8g2;
 
 
 #define UNITY_KEYBAR_TEXT_NUM   4
