@@ -85,7 +85,6 @@ void setup(void) {
 void loop(void) {
     pagemanager.Loop();
     TaskManager.Running(millis());
-
     switch (u8g_sdl_get_key())
     {
     case 'a':
