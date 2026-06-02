@@ -1,12 +1,23 @@
 # OS detector
 UNAME_S := $(shell uname -s)
 
+# Detect for Windows
+ifeq ($(OS), Windows_NT)
+	UNAME_S := Windows
+	MINGW_ROOT := /mingw64
+else
+	UNAME_S := $(shell uname -s)
+endif
+
 # Compilers
 ifeq ($(UNAME_S), Darwin)
 	СС = clang
 	CXX = clang++
 else ifeq ($(UNAME_S), Linux)
 	СС = gcc
+	CXX = g++
+else ifeq ($(UNAME_S), Windows)
+    CC = gcc
 	CXX = g++
 endif
 
@@ -17,7 +28,10 @@ ifeq ($(UNAME_S), Darwin)
 else ifeq ($(UNAME_S), Linux)
 	CFLAGS += $(shell pkg-config --cflags sdl2 SDL2_ttf)
 	CFLAGS += -mstackrealign -msse2
-endif	
+else ifeq ($(UNAME_S), Windows)
+	CFLAGS += -I$(MINGW_ROOT)/include/SDL2 -D_WIN32_WINNT=0x0601 -D__NO_INLINE__
+	CFLAGS += -D__unix__
+endif
 CFLAGS += -DARDUINO=10805
 
 # C++ flags
@@ -27,6 +41,10 @@ ifeq ($(UNAME_S), Darwin)
 else ifeq ($(UNAME_S), Linux)
 	CXXFLAGS += $(shell pkg-config --cflags sdl2 SDL2_ttf)
 	CXXFLAGS += -mstackrealign -msse2
+else ifeq ($(UNAME_S), Windows)
+	CXXFLAGS += -I$(MINGW_ROOT)/include/SDL2 -D_WIN32_WINNT=0x0601 -D__NO_INLINE__
+	CXXFLAGS += -D_NO_OLDNAMES -D_M_IX86 
+	CXXFLAGS += -D__unix__
 endif
 CXXFLAGS += -DARDUINO=10805
 
@@ -69,6 +87,8 @@ ifeq ($(UNAME_S), Darwin)
 	LDFLAGS += -framework Cocoa -framework IOKit -framework Carbon
 else ifeq ($(UNAME_S), Linux)
 	LDFLAGS = $(shell pkg-config --libs sdl2 SDL2_ttf)
+else ifeq ($(UNAME_S), Windows)
+	LDFLAGS = -L$(MINGW_ROOT)/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf
 endif
 
 # Objects
@@ -78,6 +98,15 @@ OBJECTS = $(OBJECTS_CXX) $(OBJECTS_C)
 
 # Target
 TARGET = lcd_simulator
+ifeq ($(UNAME_S), Windows)
+    TARGET := $(TARGET).exe
+endif
+
+ifeq ($(UNAME_S), Windows)
+    RM = rm -f
+else
+    RM = rm -f
+endif
 
 all: $(TARGET)
 
@@ -91,6 +120,6 @@ $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJECTS) $(TARGET)
+	$(RM) $(OBJECTS) $(TARGET)
 
 .PHONY: all clean

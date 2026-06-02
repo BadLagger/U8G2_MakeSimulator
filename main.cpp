@@ -32,6 +32,12 @@
   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
+#define _INC_INTRIN 1  
+#define __INTRIN_H 1   
+#include "SDL.h"
+#ifdef abs
+#undef abs
+#endif
 #include <Arduino.h>
 #include <Juan_EventButton.h>
 #include "MillisTaskManager.h"
@@ -41,8 +47,6 @@ MillisTaskManager TaskManager;
 static uint8_t now_page;
 
 U8G2_SDL_128X64 u8g2(U8G2_R0);
-
-#include "SDL.h"
 
 Juan_EventButton_t* button1,* button2,* button3,* button4;
 extern uint8_t select_index;
